@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bellator Voleibol Club</title>
+<meta name="description" content="Club de voleibol Bellator: inscripción de deportistas y tienda de uniformes de competencia y entrenamiento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <a href="#inicio" class="brand">Bellator</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">Menú</button>
+  <nav id="nav">
+    <a href="#club">El club</a>
+    <a href="#tienda">Tienda</a>
+    <a href="#registro">Registro</a>
+  </nav>
+  <button class="cart-btn" id="cartBtn">Carrito <span id="cartCount">0</span></button>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="court" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <p class="kicker">Club de voleibol</p>
+      <h1>Bellator</h1>
+      <p class="lead">Guerreros de la red. Entrenamos, competimos y vestimos los colores del club.</p>
+      <div class="cta">
+        <a class="btn" href="#registro">Inscribir deportista</a>
+        <a class="btn ghost" href="#tienda">Ver uniformes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="club">
+    <div class="wrap">
+      <h2>El club</h2>
+      <div class="grid3">
+        <article><h3>Entrenamiento</h3><p>Sesiones por categorías con técnica, preparación física y juego en equipo.</p></article>
+        <article><h3>Competencia</h3><p>Representamos a Bellator en torneos locales y regionales durante todo el año.</p></article>
+        <article><h3>Comunidad</h3><p>Un club para jugadores, familias y aficionados que viven el voleibol.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark" id="tienda">
+    <div class="wrap">
+      <h2>Tienda de uniformes</h2>
+      <div class="filters" role="group" aria-label="Filtrar productos">
+        <button class="chip on" data-f="todos">Todos</button>
+        <button class="chip" data-f="competencia">Competencia</button>
+        <button class="chip" data-f="entrenamiento">Entrenamiento</button>
+      </div>
+      <div class="products" id="products"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="registro">
+    <div class="wrap">
+      <h2>Registro de deportistas</h2>
+      <div class="reg">
+        <form id="athleteForm" autocomplete="off">
+          <label>Nombre completo<input name="nombre" required maxlength="60"></label>
+          <label>Documento<input name="documento" required maxlength="20"></label>
+          <label>Fecha de nacimiento<input type="date" name="nacimiento" required></label>
+          <div class="row">
+            <label>Posición
+              <select name="posicion" required>
+                <option value="">Elegir</option>
+                <option>Armador</option><option>Opuesto</option><option>Punta</option>
+                <option>Central</option><option>Líbero</option>
+              </select>
+            </label>
+            <label>N.º camiseta<input type="number" name="numero" min="0" max="99"></label>
+          </div>
+          <label>Categoría
+            <select name="categoria" required>
+              <option value="">Elegir</option>
+              <option>Infantil</option><option>Juvenil</option><option>Mayores</option>
+            </select>
+          </label>
+          <label>Teléfono de contacto<input type="tel" name="telefono" required maxlength="20"></label>
+          <button class="btn" type="submit">Guardar deportista</button>
+        </form>
+
+        <div class="list">
+          <div class="list-top">
+            <input type="search" id="search" placeholder="Buscar por nombre o categoría" aria-label="Buscar deportista">
+            <span id="total"></span>
+          </div>
+          <div id="athletes"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Bellator Voleibol Club</p>
+  <p class="small">Los datos del registro se guardan solo en este navegador.</p>
+</footer>
+
+<div class="shade" id="shade" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Carrito de compras" aria-hidden="true">
+  <div class="drawer-top">
+    <h3>Tu pedido</h3>
+    <button class="x" id="closeCart" aria-label="Cerrar carrito">&times;</button>
+  </div>
+  <div id="cartItems"></div>
+  <p class="total">Total <strong id="cartTotal">$0</strong></p>
+  <form id="orderForm" autocomplete="on">
+    <label>Nombre<input name="cliente" required maxlength="60"></label>
+    <label>Teléfono<input type="tel" name="tel" required maxlength="20"></label>
+    <label>Correo<input type="email" name="correo" required></label>
+    <label>Ciudad y dirección de entrega<input name="direccion" required maxlength="100"></label>
+    <button class="btn" type="submit">Enviar pedido por WhatsApp</button>
+  </form>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
